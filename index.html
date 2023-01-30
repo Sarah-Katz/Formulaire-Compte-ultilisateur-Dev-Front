@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Formulaire d'inscription</title>
+</head>
+
+<body>
+    <form action="submit-handler.php" method="post">
+        <div>
+            <label for="firstname" class="required">Prénom:</label>
+            <input type="text" id="firstname" name="firstname" required>
+        </div>
+        <div>
+            <label for="lastname" class="required">Nom:</label>
+            <input type="text" id="lastname" name="lastname" required>
+        </div>
+        <div>
+            <label for="email" class="required">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password" class="required">Mot de passe:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="confirm" class="required">Confirmez le mot de passe:</label>
+            <input type="password" id="confirm" name="confirm" required>
+        </div>
+        <div>
+            <label for="age" class="required">Date de naissance:</label>
+            <input type="date" name="age" id="age" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <script src="form.js"></script>
+</body>
+
+</html>

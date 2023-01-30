@@ -9,42 +9,46 @@ const age = document.querySelector('#age');
 form.addEventListener('submit', (event) => {
     if (password.value !== confirm.value) {
         event.preventDefault();
-        alert('Passwords do not match!');
+        alert('Les mots de passe ne correspondent pas');
     }
 });
 
 firstname.addEventListener('blur', () => {
     if (!firstname.value) {
-        alert('First name is required!');
+        alert('Entrez un prénom!');
     }
 });
 
 lastname.addEventListener('blur', () => {
     if (!lastname.value) {
-        alert('Last name is required!');
+        alert('Entrez un nom!');
     }
 });
 
 email.addEventListener('blur', () => {
     if (!email.value) {
-        alert('Email is required!');
+        alert('Entrez une adresse mail');
+    } else if (!/\S+@\S+\.\S+/.test(email.value)) {
+        alert("L'adresse mail n'est pas valide!");
     }
 });
 
 password.addEventListener('blur', () => {
     if (!password.value) {
-        alert('Password is required!');
+        alert('Entrez un mot de passe!');
+    } else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password.value)) {
+        alert('Le mot de passe doit contenir au moins 8 caractères, au moins une majuscule, au moins une minuscule, et au moins un chiffre!');
     }
 });
 
 confirm.addEventListener('blur', () => {
     if (!confirm.value) {
-        alert('Confirm password is required!');
+        alert('Confirmez votre mot de passe!');
     }
 });
 
 age.addEventListener('blur', () => {
     if (!age.value) {
-        alert('Age is required!');
+        alert('Entrez votre date de naissance!');
     }
 });

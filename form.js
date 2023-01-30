@@ -1,15 +1,28 @@
-const form = document.querySelector('form');
-const firstname = document.querySelector('#firstname');
-const lastname = document.querySelector('#lastname');
-const email = document.querySelector('#email');
-const password = document.querySelector('#password');
-const confirm = document.querySelector('#confirm');
-const age = document.querySelector('#age');
+const form = document.getElementById('form');
+const firstname = document.getElementById('firstname');
+const lastname = document.getElementById('lastname');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const confirm = document.getElementById('confirm');
+const birthdate = document.getElementById('age');
+const formSubmit = document.getElementById('submit');
+
+
+function calculateAge(date) 
+{
+  const now = new Date();
+  const diff = Math.abs(now - date );
+  const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365)); 
+  return age
+}
 
 form.addEventListener('submit', (event) => {
+    let age = calculateAge(birthdate.value);
     if (password.value !== confirm.value) {
         event.preventDefault();
         alert('Les mots de passe ne correspondent pas');
+    } else if (age < 13) {
+        alert('')
     }
 });
 
@@ -47,8 +60,9 @@ confirm.addEventListener('blur', () => {
     }
 });
 
-age.addEventListener('blur', () => {
-    if (!age.value) {
+birthdate.addEventListener('blur', () => {
+    if (!birthdate.value) {
         alert('Entrez votre date de naissance!');
     }
 });
+

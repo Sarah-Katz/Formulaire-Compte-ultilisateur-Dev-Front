@@ -8,21 +8,23 @@ const birthdate = document.getElementById('age');
 const formSubmit = document.getElementById('submit');
 
 
-function calculateAge(date) 
-{
-  const now = new Date();
-  const diff = Math.abs(now - date );
-  const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365)); 
-  return age
-}
 
-form.addEventListener('submit', (event) => {
-    let age = calculateAge(birthdate.value);
-    if (password.value !== confirm.value) {
-        event.preventDefault();
-        alert('Les mots de passe ne correspondent pas');
-    } else if (age < 13) {
-        alert('')
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+    const date = today.getDate();
+    const birthYear = new Date(birthdate.valueAsNumber).getFullYear();
+    const birthMonth = new Date(birthdate.valueAsNumber).getMonth();
+    const birthDate = new Date(birthdate.valueAsNumber).getDate();
+
+    if (year - birthYear < 13 || (year - birthYear === 13 && month < birthMonth) || (year - birthYear === 13 && month === birthMonth && date < birthDate)) {
+        alert("Vous devez avoir au moins 13 ans pour vous inscrire.");
+    } else if (password.value !== confirm.value) {
+        alert("Les mots de passe ne correspondent pas.");
+    } else {
+        form.submit();
     }
 });
 
